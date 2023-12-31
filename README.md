@@ -133,4 +133,53 @@ Consider safer alternatives like smart pointers in C++ when appropriate.
 - Enhanced code reusability and maintainability
 - Easier modeling of real-world concepts
 - Potential for more adaptable and flexible software systems
+- 
+ **Here's an explanation of inline functions in C++, highlighting their usefulness:**
+
+**Inline Functions:**
+
+- **Definition:** Inline functions are functions whose code is substituted directly into the calling code at compile time, rather than generating a separate function call.
+- **Declaration:** Defined using the `inline` keyword before the function declaration:
+
+```c++
+inline int square(int x) {
+    return x * x;
+}
+```
+
+**Benefits:**
+
+1. **Performance:**
+   - Eliminate function call overhead, improving performance for small, frequently called functions.
+   - Avoid context switching and function call setup/cleanup.
+
+2. **Code Size:**
+   - Can reduce code size if used for small functions that are called multiple times.
+   - Avoid function call instructions and potential code duplication.
+
+3. **Readability:**
+   - Improve code readability by keeping code together instead of jumping to separate function definitions.
+
+4. **Encapsulation:**
+   - Enable encapsulation of small, helper functions within classes without incurring function call overhead.
+
+5. **Debugging:**
+   - Can simplify debugging by having code inline within a single context.
+
+**Cautions:**
+
+- **Overuse:** Excessive use can lead to larger code size, potentially slowing compilation and increasing memory usage.
+- **Complex Functions:** Inlining large or complex functions might not yield significant performance gains.
+- **Compiler Decisions:** The compiler ultimately decides whether to inline a function, based on factors like code size and optimization settings.
+
+**Best Practices:**
+
+- Use inline functions for:
+    - **Small, frequently called functions:** Arithmetic operations, getters/setters, simple calculations.
+    - **Functions within class definitions:** Encapsulate implementation details without performance overhead.
+- Avoid inlining:
+    - **Large or complex functions:** Unlikely to improve performance and could negatively impact code size.
+    - **Recursive functions:** Inlining can lead to code explosion.
+- Prefer `constexpr` functions for compile-time computations whenever possible.
+
 
